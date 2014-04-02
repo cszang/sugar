@@ -1,0 +1,61 @@
+* sugar
+
+Some syntactical sugar for R.
+
+** Appending objects to lists
+   
+   Assume we have an list and some objects we want to be named parts
+   of this list.
+
+#+begin_src R
+  mylist <- list()
+  numbers <- 1:20
+  breakfast <- "chunky bacon"
+  wood <- list(oak = "hard", spruce = "soft")
+#+end_src
+
+   In R, you usually do
+
+#+begin_src R
+  mylist$numbers <- numbers
+#+end_src
+
+   to append a single object to this list. The same thing has to be
+   done for multiple objects:
+
+#+begin_src R
+  mylist$breakfast <- breakfast
+  mylist$wood <- wood
+#+end_src
+   
+   The sugar provided shortens this to:
+
+#+begin_src R
+  mylist %$% numbers
+#+end_src
+   
+   for the case of appending a single object, and for multiple
+   objects to:
+
+#+begin_src R
+  mylist %$% c(breakfast, wood)
+#+end_src
+
+   This is achieved using global assignment, so be careful when using
+   this non-interactively.
+
+** Loading multiple packages with one call
+
+   Instead of
+
+#+begin_src R
+  library(utils)
+  library(mgcv)
+  library(sp)
+#+end_src
+
+   We can do
+
+#+begin_src R
+  libraries(utils, mgcv, sp)
+#+end_src
