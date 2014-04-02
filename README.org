@@ -1,6 +1,6 @@
 * sugar
 
-Some syntactical sugar for R.
+Some syntactic sugar for R.
 
 ** Appending objects to lists
    
